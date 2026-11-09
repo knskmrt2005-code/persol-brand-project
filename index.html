@@ -1,0 +1,1015 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>あなたの仕事、届いています。｜PERSOL BRAND PROJECT</title>
+  <meta name="description" content="普段は言葉にならない「よかった」を、働く人の手応えに。パーソルが構想する、働く価値実感プラットフォーム。">
+  
+  <!-- Google Fonts: 洗練されたエディトリアル明朝・ゴシック -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600;700&family=Zen+Kaku+Gothic+New:wght@300;400;500;700&family=Cinzel:wght@500;700&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              cream: '#FAF8F5',       /* ベース：柔らかなアイボリー */
+              card: '#F4EFEA',        /* カード背景 */
+              ink: '#262422',         /* 墨文字 */
+              muted: '#6E6963',       /* 控えめな文字 */
+              border: '#E8E2D9',      /* 上品な枠線 */
+              coral: '#E06D53',       /* 温かなパーソル調コーラル */
+              sage: '#8FA382',        /* 清潔なセージグリーン */
+              amber: '#DDA15E'        /* 陽だまりのようなアンバー */
+            }
+          },
+          fontFamily: {
+            serif: ['"Shippori Mincho"', 'serif'],
+            sans: ['"Zen Kaku Gothic New"', 'sans-serif'],
+            en: ['"Cinzel"', 'serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* 日本語縦書きクラス */
+    .vertical-rl {
+      writing-mode: vertical-rl;
+      -webkit-writing-mode: vertical-rl;
+      text-orientation: upright;
+      letter-spacing: 0.28em;
+    }
+
+    /* 上品なスクロール挙動と基本設定 */
+    html {
+      scroll-behavior: smooth;
+      background-color: #FAF8F5;
+      color: #262422;
+    }
+
+    ::selection {
+      background-color: #E06D53;
+      color: #ffffff;
+    }
+
+    /* 繊細なフェードイン */
+    .reveal-on-scroll {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: opacity, transform;
+    }
+    .reveal-on-scroll.is-revealed {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ペットボトルキャップ落下アニメーション */
+    @keyframes drop-cap {
+      0% {
+        transform: translateY(-80px) rotate(0deg) scale(0.7);
+        opacity: 0;
+      }
+      40% {
+        opacity: 1;
+      }
+      75% {
+        transform: translateY(6px) rotate(18deg) scale(1.05);
+      }
+      100% {
+        transform: translateY(0) rotate(-10deg) scale(1);
+        opacity: 1;
+      }
+    }
+    .animate-drop {
+      animation: drop-cap 0.65s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    }
+
+    /* 水平スクロールバー非表示 */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+  </style>
+</head>
+<body class="font-sans antialiased text-brand-ink bg-brand-cream selection:bg-brand-coral selection:text-white">
+
+  <!-- プロトタイプ注記バナー（最上部固定） -->
+  <aside class="sticky top-0 z-50 bg-[#1E1C1A] text-white/80 px-4 py-2 text-xs tracking-wider border-b border-white/10 flex justify-between items-center backdrop-blur-md">
+    <div class="flex items-center gap-2 mx-auto sm:mx-0">
+      <span class="inline-block w-2 h-2 rounded-full bg-brand-coral animate-ping"></span>
+      <span class="font-medium text-white">PERSOL Brand Concept Prototype</span>
+      <span class="hidden md:inline text-white/50">｜ 本サイトは自主提案によるコンセプトサイトです</span>
+    </div>
+    <div class="hidden sm:block text-[11px] text-white/50">
+      企画検証用デモ（面接・プレゼンテーション用）
+    </div>
+  </aside>
+
+  <!-- ナビゲーション -->
+  <header class="w-full border-b border-brand-border/60 bg-brand-cream/90 backdrop-blur-sm sticky top-[33px] z-40 transition-all">
+    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+      <a href="#" class="flex items-baseline gap-3">
+        <span class="font-en text-xl tracking-widest font-bold text-brand-ink">PERSOL</span>
+        <span class="text-xs text-brand-muted tracking-widest pl-3 border-l border-brand-border font-serif">BRAND PROJECT</span>
+      </a>
+
+      <nav class="hidden md:flex items-center gap-8 text-sm tracking-widest text-brand-muted">
+        <a href="#thought" class="hover:text-brand-coral transition-colors">想い</a>
+        <a href="#how" class="hover:text-brand-coral transition-colors">仕組み</a>
+        <a href="#stories" class="hover:text-brand-coral transition-colors">５つの仕事</a>
+        <a href="#experience" class="hover:text-brand-coral transition-colors">体験する</a>
+        <a href="#vision" class="hover:text-brand-coral transition-colors">ビジョン</a>
+        <a href="#future" class="hover:text-brand-coral transition-colors">共創の未来</a>
+      </nav>
+
+      <a href="#experience" class="text-xs tracking-wider bg-brand-ink text-white px-5 py-2.5 rounded-full hover:bg-brand-coral transition-colors shadow-sm">
+        「よかった」を体験する
+      </a>
+    </div>
+  </header>
+
+  <!-- ==============================================
+       SECTION 01: HERO
+  ============================================== -->
+  <section class="relative min-h-[92vh] flex flex-col justify-between pt-8 pb-16 overflow-hidden border-b border-brand-border">
+    <div class="max-w-7xl mx-auto px-6 w-full flex-1 flex flex-col justify-center">
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center py-6">
+        
+        <!-- コピーエリア（PCでは縦書きの美しいエディトリアルレイアウト） -->
+        <div class="lg:col-span-5 flex flex-col justify-center order-2 lg:order-1 pt-6 lg:pt-0">
+          <div class="flex items-start gap-8">
+            <!-- 縦書きメインコピー -->
+            <h1 class="vertical-rl font-serif text-3xl sm:text-4xl xl:text-5xl font-medium leading-[2.1] text-brand-ink tracking-[0.24em] select-none">
+              あなたの仕事、<br>
+              届いています。
+            </h1>
+
+            <!-- 縦書きタグライン & 注釈 -->
+            <div class="flex flex-col gap-6 pt-2">
+              <span class="inline-block text-[11px] tracking-[0.3em] uppercase text-brand-coral font-medium border-b border-brand-coral pb-1">
+                Persol Brand Action
+              </span>
+              <p class="font-serif text-sm sm:text-base text-brand-muted leading-relaxed tracking-wider">
+                普段は言葉にならない「よかった」を、<br>
+                働く人の手応えに。
+              </p>
+            </div>
+          </div>
+
+          <div class="mt-12 max-w-md">
+            <p class="text-xs sm:text-sm text-brand-muted/90 leading-loose font-sans">
+              街を整える人、温かい給食をつくる人、荷物を届ける人、安心を守る管理人さん。<br>
+              私たちが日々当たり前に受け取っている心地よさを、働く人自身の誇りと手応えに変えていくプロジェクトです。
+            </p>
+          </div>
+        </div>
+
+        <!-- 写真の横連なり（職業の多様性と生活者との接点） -->
+        <div class="lg:col-span-7 order-1 lg:order-2">
+          <div class="flex gap-4 sm:gap-6 overflow-x-auto pb-4 no-scrollbar -mx-6 px-6 lg:mx-0 lg:px-0">
+            
+            <!-- 写真 1: 学校給食 -->
+            <div class="min-w-[220px] sm:min-w-[260px] flex-shrink-0 group">
+              <div class="relative aspect-[3/4.5] overflow-hidden rounded-2xl bg-stone-200">
+                <img src="https://images.unsplash.com/photo-1577896851231-70ef18881754?auto=format&fit=crop&w=800&q=80" 
+                     alt="給食をつくる調理員と子どもたち" 
+                     class="w-full h-full object-cover transition duration-700 group-hover:scale-105 filter grayscale-[15%] contrast-[95%]">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+                <div class="absolute bottom-4 left-4 right-4 text-white">
+                  <span class="text-[10px] tracking-widest uppercase bg-white/20 backdrop-blur-md px-2 py-0.5 rounded text-white/90">Case 01</span>
+                  <p class="font-serif text-sm mt-1">学校給食の現場</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- 写真 2: マンション管理・街の日常 -->
+            <div class="min-w-[220px] sm:min-w-[260px] flex-shrink-0 group mt-6 sm:mt-10">
+              <div class="relative aspect-[3/4.5] overflow-hidden rounded-2xl bg-stone-200">
+                <img src="https://images.unsplash.com/photo-1581579438747-1dc8d17bbce4?auto=format&fit=crop&w=800&q=80" 
+                     alt="居住空間を見守る管理人と挨拶を交わす日常" 
+                     class="w-full h-full object-cover transition duration-700 group-hover:scale-105 filter grayscale-[15%] contrast-[95%]">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+                <div class="absolute bottom-4 left-4 right-4 text-white">
+                  <span class="text-[10px] tracking-widest uppercase bg-white/20 backdrop-blur-md px-2 py-0.5 rounded text-white/90">Case 02</span>
+                  <p class="font-serif text-sm mt-1">マンション・街の安心</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- 写真 3: 施設・空間の清掃 -->
+            <div class="min-w-[220px] sm:min-w-[260px] flex-shrink-0 group">
+              <div class="relative aspect-[3/4.5] overflow-hidden rounded-2xl bg-stone-200">
+                <img src="https://images.unsplash.com/photo-1527515637462-cff94eecc1ac?auto=format&fit=crop&w=800&q=80" 
+                     alt="清潔な空間を保つ清掃の仕事" 
+                     class="w-full h-full object-cover transition duration-700 group-hover:scale-105 filter grayscale-[15%] contrast-[95%]">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+                <div class="absolute bottom-4 left-4 right-4 text-white">
+                  <span class="text-[10px] tracking-widest uppercase bg-white/20 backdrop-blur-md px-2 py-0.5 rounded text-white/90">Case 03</span>
+                  <p class="font-serif text-sm mt-1">心地よさを磨く清掃</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- 写真 4: 物流・手渡し -->
+            <div class="min-w-[220px] sm:min-w-[260px] flex-shrink-0 group mt-6 sm:mt-10">
+              <div class="relative aspect-[3/4.5] overflow-hidden rounded-2xl bg-stone-200">
+                <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=800&q=80" 
+                     alt="荷物を届ける配達員" 
+                     class="w-full h-full object-cover transition duration-700 group-hover:scale-105 filter grayscale-[15%] contrast-[95%]">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+                <div class="absolute bottom-4 left-4 right-4 text-white">
+                  <span class="text-[10px] tracking-widest uppercase bg-white/20 backdrop-blur-md px-2 py-0.5 rounded text-white/90">Case 04</span>
+                  <p class="font-serif text-sm mt-1">想いをつなぐ配達</p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <p class="text-[11px] text-brand-muted/70 text-right mt-3 tracking-wider">※ 掲載写真はすべてコンセプト検証用のイメージです</p>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- スクロールインジケータ -->
+    <div class="max-w-7xl mx-auto px-6 w-full flex items-center justify-between pt-8 text-xs text-brand-muted">
+      <div class="flex items-center gap-2">
+        <span class="w-1.5 h-1.5 rounded-full bg-brand-coral"></span>
+        <span>はたらいて、笑おう。｜PERSOL Group</span>
+      </div>
+      <div class="flex items-center gap-3 tracking-widest text-[11px]">
+        <span>SCROLL DOWN</span>
+        <span class="w-8 h-[1px] bg-brand-border"></span>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ==============================================
+       SECTION 02: OUR THOUGHT
+  ============================================== -->
+  <section id="thought" class="py-28 bg-[#F4EFEA] border-b border-brand-border relative">
+    <div class="max-w-5xl mx-auto px-6">
+      
+      <div class="text-center mb-16 reveal-on-scroll">
+        <span class="font-en text-xs tracking-[0.3em] uppercase text-brand-coral font-semibold">OUR THOUGHT</span>
+        <h2 class="font-serif text-2xl sm:text-4xl text-brand-ink mt-3 font-medium leading-relaxed">
+          いつもの暮らしに、誰かの仕事がある。
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-12 items-center">
+        <!-- 写真 -->
+        <div class="md:col-span-5 reveal-on-scroll">
+          <div class="relative rounded-2xl overflow-hidden shadow-lg aspect-[4/5] bg-stone-300">
+            <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=900&q=80" 
+                 alt="当たり前の日常を支える人の手仕事" 
+                 class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-stone-900/10"></div>
+          </div>
+        </div>
+
+        <!-- メッセージ文塊 -->
+        <div class="md:col-span-7 space-y-6 text-brand-ink font-serif text-base sm:text-lg leading-loose reveal-on-scroll">
+          <p class="font-medium text-brand-coral">
+            私たちの毎日は、誰かの仕事でできている。
+          </p>
+          <p class="text-brand-muted text-sm sm:text-base font-sans leading-relaxed">
+            いつもきれいな街。温かい給食。<br>
+            時間どおりに届く荷物。安心して過ごせる暮らし。<br>
+            その当たり前の一つひとつに、誰かの真面目な仕事があります。
+          </p>
+          <div class="h-px bg-brand-border my-6"></div>
+          <p class="text-sm sm:text-base font-sans text-brand-ink leading-relaxed">
+            でも、私たちが日常で感じている「よかった」は、働いている本人にはなかなか届きません。<br>
+            仕事を無事に終えたことは分かっても、その仕事が今日、誰かの暮らしをどう支えたのかは見えにくいからです。
+          </p>
+          <p class="text-sm sm:text-base font-sans text-brand-coral font-medium leading-relaxed">
+            だから、普段の暮らしの中にある小さな満足を、働く人へ届けたい。<br>
+            特別な感謝を義務にするのではなく、いつもの何気ない日常行動を、仕事への手応えが自然と集まる体験に変えていくこと。
+          </p>
+          <p class="text-xs text-brand-muted font-sans tracking-wider">
+            自分の仕事が、確かに誰かに届いている。その実感が、働く人の笑顔につながっていきます。
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ==============================================
+       SECTION 03: HOW IT WORKS
+  ============================================== -->
+  <section id="how" class="py-28 bg-brand-cream border-b border-brand-border">
+    <div class="max-w-6xl mx-auto px-6">
+      
+      <div class="text-center max-w-2xl mx-auto mb-20 reveal-on-scroll">
+        <span class="font-en text-xs tracking-[0.3em] uppercase text-brand-coral font-semibold">HOW IT WORKS</span>
+        <h2 class="font-serif text-2xl sm:text-4xl text-brand-ink mt-3 font-medium">
+          日常の「よかった」を、仕事の手応えに。
+        </h2>
+        <p class="text-sm text-brand-muted mt-4 font-sans leading-relaxed">
+          大切なのは、感謝を強要しないこと。「ありがとう」の手紙を書かせるのではなく、日々の生活行動そのものを、温かな手応えへと変換します。
+        </p>
+      </div>
+
+      <!-- 5つのステップ・循環ダイアグラム -->
+      <div class="grid grid-cols-1 md:grid-cols-5 gap-4 relative reveal-on-scroll">
+        
+        <!-- STEP 1 -->
+        <div class="bg-white p-6 rounded-2xl border border-brand-border flex flex-col justify-between hover:shadow-md transition">
+          <div>
+            <div class="w-10 h-10 rounded-full bg-brand-cream flex items-center justify-center text-xs font-serif font-bold text-brand-coral mb-4 border border-brand-border">01</div>
+            <h3 class="font-serif text-base font-semibold mb-2">日常行動に着目</h3>
+            <p class="text-xs text-brand-muted leading-relaxed">ごみ捨て、配膳返却、受領サインなど、生活の中で必ず行う無意識の動作を見つめます。</p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-brand-cream text-[11px] text-brand-coral flex items-center gap-1">
+            <i data-lucide="eye" class="w-3.5 h-3.5"></i>
+            <span>無理のない導線</span>
+          </div>
+        </div>
+
+        <!-- STEP 2 -->
+        <div class="bg-white p-6 rounded-2xl border border-brand-border flex flex-col justify-between hover:shadow-md transition">
+          <div>
+            <div class="w-10 h-10 rounded-full bg-brand-cream flex items-center justify-center text-xs font-serif font-bold text-brand-coral mb-4 border border-brand-border">02</div>
+            <h3 class="font-serif text-base font-semibold mb-2">体験をデザイン</h3>
+            <p class="text-xs text-brand-muted leading-relaxed">キャップを入れる、札を返すなど、誰もが思わず参加したくなる直感的な仕掛けを設計。</p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-brand-cream text-[11px] text-brand-coral flex items-center gap-1">
+            <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
+            <span>自然な楽しさ</span>
+          </div>
+        </div>
+
+        <!-- STEP 3 -->
+        <div class="bg-white p-6 rounded-2xl border border-brand-border flex flex-col justify-between hover:shadow-md transition">
+          <div>
+            <div class="w-10 h-10 rounded-full bg-brand-cream flex items-center justify-center text-xs font-serif font-bold text-brand-coral mb-4 border border-brand-border">03</div>
+            <h3 class="font-serif text-base font-semibold mb-2">「よかった」が集まる</h3>
+            <p class="text-xs text-brand-muted leading-relaxed">「今日のカレー最高」「いつも廊下が清潔」といった、日々の小さな満足が集計されます。</p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-brand-cream text-[11px] text-brand-coral flex items-center gap-1">
+            <i data-lucide="heart" class="w-3.5 h-3.5"></i>
+            <span>本音の満足感</span>
+          </div>
+        </div>
+
+        <!-- STEP 4 -->
+        <div class="bg-white p-6 rounded-2xl border border-brand-border flex flex-col justify-between hover:shadow-md transition">
+          <div>
+            <div class="w-10 h-10 rounded-full bg-brand-cream flex items-center justify-center text-xs font-serif font-bold text-brand-coral mb-4 border border-brand-border">04</div>
+            <h3 class="font-serif text-base font-semibold mb-2">働く人へ可視化</h3>
+            <p class="text-xs text-brand-muted leading-relaxed">筒に溜まったキャップの高さや結果ボードを通じて、自分の仕事への反応がダイレクトに届く。</p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-brand-cream text-[11px] text-brand-coral flex items-center gap-1">
+            <i data-lucide="smile" class="w-3.5 h-3.5"></i>
+            <span>目に見える手応え</span>
+          </div>
+        </div>
+
+        <!-- STEP 5 -->
+        <div class="bg-white p-6 rounded-2xl border border-brand-border flex flex-col justify-between hover:shadow-md transition">
+          <div>
+            <div class="w-10 h-10 rounded-full bg-brand-cream flex items-center justify-center text-xs font-serif font-bold text-brand-coral mb-4 border border-brand-border">05</div>
+            <h3 class="font-serif text-base font-semibold mb-2">はたらいて、笑う</h3>
+            <p class="text-xs text-brand-muted leading-relaxed">「自分の仕事は届いている」という実感が誇りを生み、明日の前向きな笑顔へ循環します。</p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-brand-cream text-[11px] text-brand-coral flex items-center gap-1">
+            <i data-lucide="sun" class="w-3.5 h-3.5"></i>
+            <span>持続する誇り</span>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ==============================================
+       SECTION 04: PROJECT STORIES
+  ============================================== -->
+  <section id="stories" class="py-28 bg-[#F8F5F0] border-b border-brand-border">
+    <div class="max-w-6xl mx-auto px-6">
+      
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 reveal-on-scroll">
+        <div>
+          <span class="font-en text-xs tracking-[0.3em] uppercase text-brand-coral font-semibold">PROJECT STORIES</span>
+          <h2 class="font-serif text-2xl sm:text-4xl text-brand-ink mt-3 font-medium">
+            いろんな仕事に、いろんな「届いた」がある。
+          </h2>
+        </div>
+        <p class="text-xs sm:text-sm text-brand-muted mt-4 md:mt-0 font-sans max-w-md">
+          ※ すべて画一的な投票ではなく、それぞれの職種・現場の日常行動に寄り添った体験構想です。
+        </p>
+      </div>
+
+      <!-- 5つの職業ストーリーカード -->
+      <div class="space-y-12">
+        
+        <!-- CASE 01: 学校給食 -->
+        <div class="bg-white rounded-3xl p-6 sm:p-10 border border-brand-border shadow-sm grid grid-cols-1 lg:grid-cols-12 gap-8 items-center reveal-on-scroll">
+          <div class="lg:col-span-5 relative rounded-2xl overflow-hidden aspect-[4/3] bg-stone-200">
+            <img src="https://images.unsplash.com/photo-1577896851231-70ef18881754?auto=format&fit=crop&w=900&q=80" 
+                 alt="給食の調理" class="w-full h-full object-cover">
+            <span class="absolute top-4 left-4 bg-brand-ink/80 text-white backdrop-blur text-xs px-3 py-1 rounded-full font-serif">CASE 01｜学校給食</span>
+          </div>
+          <div class="lg:col-span-7 space-y-4">
+            <span class="text-xs text-brand-coral tracking-widest font-semibold uppercase">Dietitian & Cooks</span>
+            <h3 class="font-serif text-xl sm:text-2xl font-medium text-brand-ink">
+              「今日の『おいしかった』が、つくった人に届く。」
+            </h3>
+            <p class="text-sm text-brand-muted leading-relaxed font-sans">
+              【日常行動の仕掛け】子どもたちが給食を食べ終え、牛乳パックやトレイを片付ける場所に、小さな返却投票ボックスを設置。「一番元気が出たおかず」にパックを戻すだけで、子どもたちの率直な声が集まります。
+            </p>
+            <div class="bg-brand-cream p-4 rounded-xl text-xs text-brand-ink space-y-1 border border-brand-border">
+              <span class="font-bold text-brand-coral">届けたい手応え：</span>
+              <p>残食の数字だけでは分からない「今日、子どもたちを笑顔にしたメニュー」の確かな実感が、朝早くから釜に向き合う調理員や栄養士の活力になります。</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- CASE 02: マンション管理 -->
+        <div class="bg-white rounded-3xl p-6 sm:p-10 border border-brand-border shadow-sm grid grid-cols-1 lg:grid-cols-12 gap-8 items-center reveal-on-scroll">
+          <div class="lg:col-span-5 relative rounded-2xl overflow-hidden aspect-[4/3] bg-stone-200">
+            <img src="https://images.unsplash.com/photo-1581579438747-1dc8d17bbce4?auto=format&fit=crop&w=900&q=80" 
+                 alt="マンションの共用部" class="w-full h-full object-cover">
+            <span class="absolute top-4 left-4 bg-brand-ink/80 text-white backdrop-blur text-xs px-3 py-1 rounded-full font-serif">CASE 02｜マンション管理</span>
+          </div>
+          <div class="lg:col-span-7 space-y-4">
+            <span class="text-xs text-brand-coral tracking-widest font-semibold uppercase">Building Manager</span>
+            <h3 class="font-serif text-xl sm:text-2xl font-medium text-brand-ink">
+              「いつもの『住みやすい』が、支える人に届く。」
+            </h3>
+            <p class="text-sm text-brand-muted leading-relaxed font-sans">
+              【日常行動の仕掛け】住人が朝のごみ出しのついでに、分別したペットボトルキャップを「このマンションの好きなところ」が書かれた透明な筒へ投入。「いつもピカピカのエントランス」「気持ちのいい挨拶」にキャップが積み上がります。
+            </p>
+            <div class="bg-brand-cream p-4 rounded-xl text-xs text-brand-ink space-y-1 border border-brand-border">
+              <span class="font-bold text-brand-coral">届けたい手応え：</span>
+              <p>「問題が起きていないことが当たり前」とされがちな管理業務。住人が静かに感謝しているポイントが透明な筒に見える化され、管理人さんの誇りに変わります。</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- CASE 03: 清掃業務 -->
+        <div class="bg-white rounded-3xl p-6 sm:p-10 border border-brand-border shadow-sm grid grid-cols-1 lg:grid-cols-12 gap-8 items-center reveal-on-scroll">
+          <div class="lg:col-span-5 relative rounded-2xl overflow-hidden aspect-[4/3] bg-stone-200">
+            <img src="https://images.unsplash.com/photo-1527515637462-cff94eecc1ac?auto=format&fit=crop&w=900&q=80" 
+                 alt="施設清掃" class="w-full h-full object-cover">
+            <span class="absolute top-4 left-4 bg-brand-ink/80 text-white backdrop-blur text-xs px-3 py-1 rounded-full font-serif">CASE 03｜空間清掃</span>
+          </div>
+          <div class="lg:col-span-7 space-y-4">
+            <span class="text-xs text-brand-coral tracking-widest font-semibold uppercase">Facility Cleaning</span>
+            <h3 class="font-serif text-xl sm:text-2xl font-medium text-brand-ink">
+              「いつもの『気持ちいい』が、磨く人に届く。」
+            </h3>
+            <p class="text-sm text-brand-muted leading-relaxed font-sans">
+              【日常行動の仕掛け】オフィスタワーや商業施設のレストルーム・ラウンジの出口に、手をかざすだけの非接触センサーやささやかなタッチサインを配置。「今日、気持ちよく過ごせた」瞬間のフィードバックをノイズなく蓄積。
+            </p>
+            <div class="bg-brand-cream p-4 rounded-xl text-xs text-brand-ink space-y-1 border border-brand-border">
+              <span class="font-bold text-brand-coral">届けたい手応え：</span>
+              <p>利用者の目線が届きにくい時間帯に空間を磨く清掃員へ、「今日も1,200人が心地よく過ごしました」という温かな実績サマリーを控室のボードにお届けします。</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- CASE 04: 物流配達 -->
+        <div class="bg-white rounded-3xl p-6 sm:p-10 border border-brand-border shadow-sm grid grid-cols-1 lg:grid-cols-12 gap-8 items-center reveal-on-scroll">
+          <div class="lg:col-span-5 relative rounded-2xl overflow-hidden aspect-[4/3] bg-stone-200">
+            <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=900&q=80" 
+                 alt="物流・荷物配達" class="w-full h-full object-cover">
+            <span class="absolute top-4 left-4 bg-brand-ink/80 text-white backdrop-blur text-xs px-3 py-1 rounded-full font-serif">CASE 04｜ラストマイル物流</span>
+          </div>
+          <div class="lg:col-span-7 space-y-4">
+            <span class="text-xs text-brand-coral tracking-widest font-semibold uppercase">Logistics & Delivery</span>
+            <h3 class="font-serif text-xl sm:text-2xl font-medium text-brand-ink">
+              「いつもの『届いた』が、届ける人に届く。」
+            </h3>
+            <p class="text-sm text-brand-muted leading-relaxed font-sans">
+              【日常行動の仕掛け】置き配や受取完了時の確認メールに、「届いた瞬間、助かったこと（楽しみにしていた本、急ぎの贈り物など）」をワンタップで選べるスタンプを導入。
+            </p>
+            <div class="bg-brand-cream p-4 rounded-xl text-xs text-brand-ink space-y-1 border border-brand-border">
+              <span class="font-bold text-brand-coral">届けたい手応え：</span>
+              <p>時間指定と再配達に追われるドライバーの手元端末に、「今日あなたの荷物が、子どもの誕生日に間に合いました」という生活者のリアルな安堵の瞬間が届きます。</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- CASE 05: 介護支援 -->
+        <div class="bg-white rounded-3xl p-6 sm:p-10 border border-brand-border shadow-sm grid grid-cols-1 lg:grid-cols-12 gap-8 items-center reveal-on-scroll">
+          <div class="lg:col-span-5 relative rounded-2xl overflow-hidden aspect-[4/3] bg-stone-200">
+            <img src="https://images.unsplash.com/photo-1576765608535-5f04d1e3f289?auto=format&fit=crop&w=900&q=80" 
+                 alt="介護・シニアケア" class="w-full h-full object-cover">
+            <span class="absolute top-4 left-4 bg-brand-ink/80 text-white backdrop-blur text-xs px-3 py-1 rounded-full font-serif">CASE 05｜シニアケア・介護</span>
+          </div>
+          <div class="lg:col-span-7 space-y-4">
+            <span class="text-xs text-brand-coral tracking-widest font-semibold uppercase">Senior Care</span>
+            <h3 class="font-serif text-xl sm:text-2xl font-medium text-brand-ink">
+              「いつもの『安心』が、支える人に届く。」
+            </h3>
+            <p class="text-sm text-brand-muted leading-relaxed font-sans">
+              【日常行動の仕掛け】ご家族が施設面会に来た際や日誌の返信時に、専用の「安心の栞（しおり）」を投函できる木製レターポストを設置。何気ない散歩や日々の見守りへの安らぎを自然に共有。
+            </p>
+            <div class="bg-brand-cream p-4 rounded-xl text-xs text-brand-ink space-y-1 border border-brand-border">
+              <span class="font-bold text-brand-coral">届けたい手応え：</span>
+              <p>責任と緊張が続く現場の中で、介護従事者が「ご家族にとっていかにかけがえのない支えになっているか」を温かく実感できる環境を創出します。</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ==============================================
+       SECTION 05: INTERACTIVE EXPERIENCE
+  ============================================== -->
+  <section id="experience" class="py-28 bg-brand-cream border-b border-brand-border">
+    <div class="max-w-5xl mx-auto px-6">
+      
+      <div class="text-center max-w-2xl mx-auto mb-16 reveal-on-scroll">
+        <span class="font-en text-xs tracking-[0.3em] uppercase text-brand-coral font-semibold">INTERACTIVE DEMO</span>
+        <h2 class="font-serif text-2xl sm:text-4xl text-brand-ink mt-3 font-medium">
+          あなたの「よかった」を、届けてみよう。
+        </h2>
+        <p class="text-sm text-brand-muted mt-3 font-sans">
+          実際の現場で構想されている日常行動の仕組みを、画面上で疑似体験できます。
+        </p>
+      </div>
+
+      <!-- デモ切り替えタブ -->
+      <div class="flex justify-center gap-4 mb-10">
+        <button id="tabBtnA" onclick="switchDemo('A')" 
+                class="px-6 py-3 rounded-full text-xs sm:text-sm font-medium tracking-wider transition-all duration-300 bg-brand-ink text-white shadow-sm flex items-center gap-2">
+          <i data-lucide="building" class="w-4 h-4"></i>
+          <span>体験A：マンション投票（キャップ）</span>
+        </button>
+        <button id="tabBtnB" onclick="switchDemo('B')" 
+                class="px-6 py-3 rounded-full text-xs sm:text-sm font-medium tracking-wider transition-all duration-300 bg-white text-brand-muted border border-brand-border hover:bg-stone-50 flex items-center gap-2">
+          <i data-lucide="utensils" class="w-4 h-4"></i>
+          <span>体験B：学校給食（元気が出たメニュー）</span>
+        </button>
+      </div>
+
+      <!-- デモエリアコンテナ -->
+      <div class="bg-white rounded-3xl p-6 sm:p-12 border border-brand-border shadow-sm max-w-4xl mx-auto">
+        
+        <!-- DEMO A: マンション投票 -->
+        <div id="demoA" class="space-y-8">
+          <div class="text-center">
+            <span class="text-xs bg-amber-50 text-brand-amber border border-amber-200 px-3 py-1 rounded-full font-serif">ごみ捨て時の投票シミュレーション</span>
+            <h3 class="font-serif text-xl sm:text-2xl mt-3 font-medium text-brand-ink">
+              「このマンションの、好きなところは？」
+            </h3>
+            <p class="text-xs text-brand-muted mt-2">
+              ペットボトルキャップを分別する動作で、あなたが日頃感じている心地よさを1つ選んでみてください。
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center pt-4">
+            <!-- 選択肢ボタン群 -->
+            <div class="space-y-3">
+              <button onclick="voteApartment(0, 'いつもきれいな共用部')" 
+                      class="apt-btn w-full text-left p-4 rounded-xl border border-brand-border hover:border-brand-coral hover:bg-orange-50/30 transition flex items-center justify-between group">
+                <span class="text-sm font-medium text-brand-ink group-hover:text-brand-coral transition">1. いつもピカピカな共用部・エントランス</span>
+                <span class="w-6 h-6 rounded-full bg-stone-100 flex items-center justify-center text-xs text-stone-400 group-hover:bg-brand-coral group-hover:text-white transition">入</span>
+              </button>
+
+              <button onclick="voteApartment(1, '安心できる管理・対応')" 
+                      class="apt-btn w-full text-left p-4 rounded-xl border border-brand-border hover:border-brand-coral hover:bg-orange-50/30 transition flex items-center justify-between group">
+                <span class="text-sm font-medium text-brand-ink group-hover:text-brand-coral transition">2. 困った時に安心できる見守り・迅速な対応</span>
+                <span class="w-6 h-6 rounded-full bg-stone-100 flex items-center justify-center text-xs text-stone-400 group-hover:bg-brand-coral group-hover:text-white transition">入</span>
+              </button>
+
+              <button onclick="voteApartment(2, '挨拶や人とのつながり')" 
+                      class="apt-btn w-full text-left p-4 rounded-xl border border-brand-border hover:border-brand-coral hover:bg-orange-50/30 transition flex items-center justify-between group">
+                <span class="text-sm font-medium text-brand-ink group-hover:text-brand-coral transition">3. すれ違う時のあたたかな挨拶と声かけ</span>
+                <span class="w-6 h-6 rounded-full bg-stone-100 flex items-center justify-center text-xs text-stone-400 group-hover:bg-brand-coral group-hover:text-white transition">入</span>
+              </button>
+
+              <button onclick="voteApartment(3, '暮らしやすい建物・設備')" 
+                      class="apt-btn w-full text-left p-4 rounded-xl border border-brand-border hover:border-brand-coral hover:bg-orange-50/30 transition flex items-center justify-between group">
+                <span class="text-sm font-medium text-brand-ink group-hover:text-brand-coral transition">4. 不具合がなく快適に暮らせる設備保全</span>
+                <span class="w-6 h-6 rounded-full bg-stone-100 flex items-center justify-center text-xs text-stone-400 group-hover:bg-brand-coral group-hover:text-white transition">入</span>
+              </button>
+            </div>
+
+            <!-- 透明な投票筒のビジュアルシミュレーション -->
+            <div class="bg-stone-50 border border-brand-border rounded-2xl p-6 flex flex-col items-center justify-center min-h-[300px] relative overflow-hidden">
+              <div class="text-[11px] text-brand-muted tracking-widest uppercase mb-4 font-serif">Capsule Cylinder Demo</div>
+              
+              <!-- 透明な筒 -->
+              <div class="w-28 h-52 border-2 border-stone-300 rounded-b-2xl rounded-t-sm bg-white/60 relative flex flex-col justify-end p-2 overflow-hidden shadow-inner">
+                <!-- キャップが落ちてくるエリア -->
+                <div id="capsuleFallArea" class="absolute inset-0 pointer-events-none flex flex-col justify-start items-center pt-2"></div>
+                <!-- 溜まったキャップたち -->
+                <div id="stackedCaps" class="flex flex-wrap-reverse gap-1 justify-center z-10">
+                  <div class="w-6 h-6 rounded-full bg-brand-coral/70 border border-brand-coral/80 shadow-sm"></div>
+                  <div class="w-6 h-6 rounded-full bg-brand-amber/70 border border-brand-amber/80 shadow-sm"></div>
+                  <div class="w-6 h-6 rounded-full bg-brand-sage/70 border border-brand-sage/80 shadow-sm"></div>
+                </div>
+              </div>
+
+              <!-- フィードバックメッセージ表示欄 -->
+              <div id="aptFeedback" class="mt-4 text-center min-h-[48px] flex items-center justify-center px-4">
+                <p class="text-xs text-stone-400">選択肢を押すと、キャップが投入されます</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- DEMO B: 学校給食投票 -->
+        <div id="demoB" class="space-y-8 hidden">
+          <div class="text-center">
+            <span class="text-xs bg-emerald-50 text-emerald-700 border border-emerald-200 px-3 py-1 rounded-full font-serif">配膳返却時の投票シミュレーション</span>
+            <h3 class="font-serif text-xl sm:text-2xl mt-3 font-medium text-brand-ink">
+              「今日、いちばん元気が出たメニューは？」
+            </h3>
+            <p class="text-xs text-brand-muted mt-2">
+              給食を食べ終えた子どもたちが牛乳パックを返す感覚で、お気に入りをタップしてください。
+            </p>
+          </div>
+
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-4">
+            <button onclick="voteSchool('特製ポークカレー', '🍛')" 
+                    class="p-5 rounded-2xl border border-brand-border hover:border-emerald-500 hover:bg-emerald-50/30 transition text-center group flex flex-col items-center">
+              <span class="text-3xl mb-2 group-hover:scale-110 transition">🍛</span>
+              <span class="font-serif text-sm font-semibold text-brand-ink">特製ポークカレー</span>
+              <span class="text-[11px] text-brand-muted mt-1">じっくり煮込み</span>
+            </button>
+
+            <button onclick="voteSchool('シャキシャキ海藻サラダ', '🥗')" 
+                    class="p-5 rounded-2xl border border-brand-border hover:border-emerald-500 hover:bg-emerald-50/30 transition text-center group flex flex-col items-center">
+              <span class="text-3xl mb-2 group-hover:scale-110 transition">🥗</span>
+              <span class="font-serif text-sm font-semibold text-brand-ink">海藻サラダ</span>
+              <span class="text-[11px] text-brand-muted mt-1">自家製ドレッシング</span>
+            </button>
+
+            <button onclick="voteSchool('具だくさん春野菜スープ', '🍲')" 
+                    class="p-5 rounded-2xl border border-brand-border hover:border-emerald-500 hover:bg-emerald-50/30 transition text-center group flex flex-col items-center">
+              <span class="text-3xl mb-2 group-hover:scale-110 transition">🍲</span>
+              <span class="font-serif text-sm font-semibold text-brand-ink">春野菜スープ</span>
+              <span class="text-[11px] text-brand-muted mt-1">旬の甘みたっぷり</span>
+            </button>
+
+            <button onclick="voteSchool('手作りみかんゼリー', '🍊')" 
+                    class="p-5 rounded-2xl border border-brand-border hover:border-emerald-500 hover:bg-emerald-50/30 transition text-center group flex flex-col items-center">
+              <span class="text-3xl mb-2 group-hover:scale-110 transition">🍊</span>
+              <span class="font-serif text-sm font-semibold text-brand-ink">みかんゼリー</span>
+              <span class="text-[11px] text-brand-muted mt-1">果汁100%</span>
+            </button>
+          </div>
+
+          <!-- 給食フィードバックメッセージ表示欄 -->
+          <div id="schoolFeedback" class="bg-stone-50 border border-brand-border rounded-2xl p-6 text-center min-h-[96px] flex flex-col items-center justify-center">
+            <p class="text-xs text-stone-400">メニューを選ぶと、調理員室へ届く手応えメッセージが表示されます</p>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ==============================================
+       SECTION 06: PEOPLE & MOMENTS
+  ============================================== -->
+  <section class="py-28 bg-[#F4EFEA] border-b border-brand-border">
+    <div class="max-w-6xl mx-auto px-6">
+      
+      <div class="max-w-2xl mb-16 reveal-on-scroll">
+        <span class="font-en text-xs tracking-[0.3em] uppercase text-brand-coral font-semibold">PEOPLE & MOMENTS</span>
+        <h2 class="font-serif text-2xl sm:text-4xl text-brand-ink mt-3 font-medium">
+          働く喜びが、生まれる瞬間。
+        </h2>
+        <p class="text-sm text-brand-muted mt-3 font-sans leading-relaxed">
+          働く人を過度に美化するのではなく、日々の仕事の中でふと生まれる、ささやかで確かな笑顔を記録していきます。
+        </p>
+      </div>
+
+      <!-- 写真を中心としたフォトエディトリアルグリッド -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 reveal-on-scroll">
+        
+        <div class="space-y-4">
+          <div class="rounded-2xl overflow-hidden aspect-[3/4] bg-stone-300">
+            <img src="https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=800&q=80" 
+                 alt="仕事の合間にほっと微笑む女性" class="w-full h-full object-cover filter grayscale-[10%]">
+          </div>
+          <p class="font-serif text-xs text-brand-ink tracking-wide">
+            「今日きれいにした場所で、誰かがくつろいでいるのを見かけたとき。」
+          </p>
+        </div>
+
+        <div class="space-y-4 md:mt-8">
+          <div class="rounded-2xl overflow-hidden aspect-[3/4] bg-stone-300">
+            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&q=80" 
+                 alt="手応えを感じて前を向く男性" class="w-full h-full object-cover filter grayscale-[10%]">
+          </div>
+          <p class="font-serif text-xs text-brand-ink tracking-wide">
+            「自分が点検した設備が、何事もなくみんなの毎日を支えていること。」
+          </p>
+        </div>
+
+        <div class="space-y-4">
+          <div class="rounded-2xl overflow-hidden aspect-[3/4] bg-stone-300">
+            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=800&q=80" 
+                 alt="真剣な眼差しから笑顔がこぼれる瞬間" class="w-full h-full object-cover filter grayscale-[10%]">
+          </div>
+          <p class="font-serif text-xs text-brand-ink tracking-wide">
+            「ご馳走様でしたのひと言が、明日の朝早く起きる力になる。」
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ==============================================
+       SECTION 07: PERSOL'S VISION
+  ============================================== -->
+  <section id="vision" class="py-28 bg-brand-cream border-b border-brand-border relative overflow-hidden">
+    <div class="max-w-4xl mx-auto px-6 text-center reveal-on-scroll">
+      
+      <span class="font-en text-xs tracking-[0.3em] uppercase text-brand-coral font-semibold">PERSOL'S VISION</span>
+      
+      <h2 class="font-serif text-3xl sm:text-5xl text-brand-ink mt-6 font-medium tracking-wide">
+        はたらいて、笑おう。
+      </h2>
+
+      <div class="w-12 h-0.5 bg-brand-coral mx-auto my-8"></div>
+
+      <div class="space-y-6 text-brand-ink font-sans text-sm sm:text-base leading-loose max-w-2xl mx-auto">
+        <p>
+          パーソルが目指しているのは、ただ仕事を見つける支援だけではありません。<br>
+          人々が自分の仕事に意味を見出し、前向きに、笑顔で働き続けられる社会です。
+        </p>
+        <p class="text-brand-muted">
+          仕事に就いたその先の、日々の手応えや働く喜びまでを本気で考える。<br>
+          「あなたの仕事、届いています。」は、パーソルのブランドビジョンを<br class="hidden sm:inline">
+          実際の社会の仕組みとして広げていくための意志あるプロジェクトです。
+        </p>
+        <p class="font-serif text-brand-coral font-medium pt-2">
+          働くすべての人が、自分の仕事の価値を実感できる明日へ。
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ==============================================
+       SECTION 08: THE FUTURE (プラットフォーム循環図)
+  ============================================== -->
+  <section id="future" class="py-28 bg-[#F4EFEA] border-b border-brand-border">
+    <div class="max-w-6xl mx-auto px-6">
+      
+      <div class="text-center max-w-2xl mx-auto mb-20 reveal-on-scroll">
+        <span class="font-en text-xs tracking-[0.3em] uppercase text-brand-coral font-semibold">THE FUTURE ARCHITECTURE</span>
+        <h2 class="font-serif text-2xl sm:text-4xl text-brand-ink mt-3 font-medium">
+          この取り組みを、もっと多くの仕事へ。
+        </h2>
+        <p class="text-sm text-brand-muted mt-3 font-sans">
+          単発のキャンペーンにとどまらず、現場の体験・ストーリー・企業共創がめぐり続けるブランドプラットフォームの設計図。
+        </p>
+      </div>
+
+      <!-- 循環エコシステム図 -->
+      <div class="grid grid-cols-1 md:grid-cols-5 gap-4 relative reveal-on-scroll">
+        
+        <div class="bg-white rounded-2xl p-6 border border-brand-border text-center flex flex-col items-center">
+          <div class="w-12 h-12 rounded-full bg-orange-50 text-brand-coral flex items-center justify-center mb-4">
+            <i data-lucide="hand-metal" class="w-5 h-5"></i>
+          </div>
+          <h4 class="font-serif font-bold text-sm mb-2">現場で体験をつくる</h4>
+          <p class="text-xs text-brand-muted leading-relaxed">生活者の日常行動を、働く人への手応えが集まる体験へ昇華。</p>
+        </div>
+
+        <div class="bg-white rounded-2xl p-6 border border-brand-border text-center flex flex-col items-center">
+          <div class="w-12 h-12 rounded-full bg-orange-50 text-brand-coral flex items-center justify-center mb-4">
+            <i data-lucide="share-2" class="w-5 h-5"></i>
+          </div>
+          <h4 class="font-serif font-bold text-sm mb-2">社会へ発信する</h4>
+          <p class="text-xs text-brand-muted leading-relaxed">現場の笑顔やストーリーを映像・Web・PRで広く可視化。</p>
+        </div>
+
+        <div class="bg-white rounded-2xl p-6 border border-brand-border text-center flex flex-col items-center">
+          <div class="w-12 h-12 rounded-full bg-orange-50 text-brand-coral flex items-center justify-center mb-4">
+            <i data-lucide="building-2" class="w-5 h-5"></i>
+          </div>
+          <h4 class="font-serif font-bold text-sm mb-2">共感企業が参画</h4>
+          <p class="text-xs text-brand-muted leading-relaxed">学校・自治体・企業が「自社の現場でも」と参画を表明。</p>
+        </div>
+
+        <div class="bg-white rounded-2xl p-6 border border-brand-border text-center flex flex-col items-center">
+          <div class="w-12 h-12 rounded-full bg-orange-50 text-brand-coral flex items-center justify-center mb-4">
+            <i data-lucide="network" class="w-5 h-5"></i>
+          </div>
+          <h4 class="font-serif font-bold text-sm mb-2">新たな仕事へ波及</h4>
+          <p class="text-xs text-brand-muted leading-relaxed">医療・保守・小売りなど、多様な職業領域へと実装が拡大。</p>
+        </div>
+
+        <div class="bg-white rounded-2xl p-6 border border-brand-border text-center flex flex-col items-center">
+          <div class="w-12 h-12 rounded-full bg-orange-50 text-brand-coral flex items-center justify-center mb-4">
+            <i data-lucide="repeat" class="w-5 h-5"></i>
+          </div>
+          <h4 class="font-serif font-bold text-sm mb-2">ブランド価値の浸透</h4>
+          <p class="text-xs text-brand-muted leading-relaxed">パーソル＝「働く喜びを共につくる存在」として定着。</p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ==============================================
+       SECTION 09: JOIN THE PROJECT
+  ============================================== -->
+  <section class="py-28 bg-brand-cream border-b border-brand-border">
+    <div class="max-w-4xl mx-auto px-6 text-center reveal-on-scroll">
+      
+      <span class="font-en text-xs tracking-[0.3em] uppercase text-brand-coral font-semibold">JOIN THE PROJECT</span>
+      <h2 class="font-serif text-2xl sm:text-4xl text-brand-ink mt-3 font-medium">
+        あなたの職場にも、届く喜びを。
+      </h2>
+      
+      <p class="text-sm text-brand-muted mt-4 font-sans leading-relaxed max-w-xl mx-auto">
+        本プロジェクトは、企業、学校、自治体、施設運営会社との共創により、社会全体へ広げていく構想です。働く人が自分の価値を実感できる現場づくりを、共に考えませんか。
+      </p>
+
+      <div class="mt-10 bg-white p-8 rounded-3xl border border-brand-border max-w-xl mx-auto text-left shadow-sm">
+        <h4 class="font-serif text-base font-medium text-brand-ink mb-3 flex items-center gap-2">
+          <i data-lucide="message-square" class="w-4 h-4 text-brand-coral"></i>
+          <span>共創パートナーシップ構想（受付準備中）</span>
+        </h4>
+        <p class="text-xs text-brand-muted leading-relaxed mb-6 font-sans">
+          ※ 現在は自主提案フェーズのため、正式な一般公募は行っておりません。今後のプロジェクト進捗やPoC（実証実験）の展開につきましては、コンセプト検証後にご案内を予定しています。
+        </p>
+
+        <div class="space-y-3">
+          <div class="flex items-center gap-3 text-xs text-brand-ink bg-brand-cream p-3 rounded-lg">
+            <span class="w-2 h-2 rounded-full bg-brand-coral"></span>
+            <span>対象：現場を持つすべての企業・自治体・教育機関</span>
+          </div>
+          <div class="flex items-center gap-3 text-xs text-brand-ink bg-brand-cream p-3 rounded-lg">
+            <span class="w-2 h-2 rounded-full bg-brand-coral"></span>
+            <span>内容：現場動線リサーチ、体験デザイン、手応え可視化ツールの提供</span>
+          </div>
+        </div>
+
+        <button disabled class="w-full mt-6 bg-stone-200 text-stone-500 py-3 rounded-xl text-xs tracking-wider cursor-not-allowed">
+          正式ローンチ時に優先案内を受け取る（準備中）
+        </button>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ==============================================
+       FOOTER & COMPLIANCE DISCLAIMER
+  ============================================== -->
+  <footer class="bg-[#1E1C1A] text-white/70 py-16 text-xs font-sans">
+    <div class="max-w-6xl mx-auto px-6 space-y-10">
+      
+      <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 border-b border-white/10 pb-10">
+        <div>
+          <span class="font-en text-xl tracking-widest font-bold text-white">PERSOL</span>
+          <p class="text-[11px] text-white/50 tracking-widest mt-1">はたらいて、笑おう。</p>
+        </div>
+        <div class="text-xs tracking-wider text-white/60">
+          PERSOL BRAND CAMPAIGN CONCEPT PROTOTYPE
+        </div>
+      </div>
+
+      <!-- 重要注記（指定文言の厳格掲載） -->
+      <div class="bg-white/5 p-6 rounded-2xl border border-white/10 space-y-2">
+        <p class="text-[11px] font-bold text-brand-coral uppercase tracking-widest">Prototype Disclaimer</p>
+        <p class="text-xs sm:text-sm text-white/90 leading-relaxed font-serif">
+          本サイトは自主提案によるコンセプトプロトタイプです。パーソルおよび博報堂の公式プロジェクトではありません。掲載する写真・体験は構想イメージです。
+        </p>
+        <p class="text-[11px] text-white/50 leading-relaxed font-sans pt-1">
+          ※ サイト内の投票デモ、数値、コメント等はすべて企画検証のためのモックアップ（構想）であり、実在する人物・団体・実績データではありません。
+        </p>
+      </div>
+
+      <div class="flex flex-col sm:flex-row justify-between items-center text-[11px] text-white/40 gap-4">
+        <div>© 2026 PERSOL Brand Project Concept Team. All Rights Reserved.</div>
+        <div>Creative Direction & UX Prototype for Persol Group</div>
+      </div>
+
+    </div>
+  </footer>
+
+
+  <!-- ==============================================
+       JAVASCRIPT INTERACTIONS
+  ============================================== -->
+  <script>
+    // Lucide Iconsの初期化
+    lucide.createIcons();
+
+    // スクロール時の洗練されたフェードイン処理
+    const revealElements = document.querySelectorAll('.reveal-on-scroll');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-revealed');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    revealElements.forEach(el => observer.observe(el));
+
+    // 体験デモ切り替え（A: マンション / B: 学校給食）
+    function switchDemo(demoType) {
+      const demoA = document.getElementById('demoA');
+      const demoB = document.getElementById('demoB');
+      const btnA = document.getElementById('tabBtnA');
+      const btnB = document.getElementById('tabBtnB');
+
+      if (demoType === 'A') {
+        demoA.classList.remove('hidden');
+        demoB.classList.add('hidden');
+        btnA.className = 'px-6 py-3 rounded-full text-xs sm:text-sm font-medium tracking-wider transition-all duration-300 bg-brand-ink text-white shadow-sm flex items-center gap-2';
+        btnB.className = 'px-6 py-3 rounded-full text-xs sm:text-sm font-medium tracking-wider transition-all duration-300 bg-white text-brand-muted border border-brand-border hover:bg-stone-50 flex items-center gap-2';
+      } else {
+        demoA.classList.add('hidden');
+        demoB.classList.remove('hidden');
+        btnB.className = 'px-6 py-3 rounded-full text-xs sm:text-sm font-medium tracking-wider transition-all duration-300 bg-brand-ink text-white shadow-sm flex items-center gap-2';
+        btnA.className = 'px-6 py-3 rounded-full text-xs sm:text-sm font-medium tracking-wider transition-all duration-300 bg-white text-brand-muted border border-brand-border hover:bg-stone-50 flex items-center gap-2';
+      }
+    }
+
+    // 体験A：マンション投票（キャップ落下＆フィードバック）
+    const colors = ['#E06D53', '#8FA382', '#DDA15E', '#5B8C85'];
+    function voteApartment(index, label) {
+      const fallArea = document.getElementById('capsuleFallArea');
+      const stackedArea = document.getElementById('stackedCaps');
+      const feedback = document.getElementById('aptFeedback');
+
+      // 落下するキャップの生成
+      const cap = document.createElement('div');
+      cap.className = 'w-7 h-7 rounded-full shadow-md animate-drop border border-white/60';
+      cap.style.backgroundColor = colors[index % colors.length];
+      fallArea.innerHTML = '';
+      fallArea.appendChild(cap);
+
+      // アニメーション完了後に筒の底に堆積
+      setTimeout(() => {
+        fallArea.innerHTML = '';
+        const staticCap = document.createElement('div');
+        staticCap.className = 'w-6 h-6 rounded-full border border-white/60 shadow-sm';
+        staticCap.style.backgroundColor = colors[index % colors.length];
+        stackedArea.appendChild(staticCap);
+      }, 620);
+
+      // メッセージの更新
+      feedback.innerHTML = `
+        <div class="text-xs space-y-1">
+          <span class="inline-block text-brand-coral font-bold font-serif">「${label}」にキャップが入りました</span>
+          <p class="text-stone-600">管理人室へ：『今日も住人の方から、日々の丁寧な管理への実感が届きました』</p>
+        </div>
+      `;
+    }
+
+    // 体験B：学校給食投票
+    function voteSchool(menuName, emoji) {
+      const feedback = document.getElementById('schoolFeedback');
+      feedback.innerHTML = `
+        <div class="space-y-1 animate-pulse">
+          <span class="text-2xl">${emoji}</span>
+          <p class="font-serif text-sm font-bold text-brand-ink">『${menuName}』への「おいしかった！」が届きました</p>
+          <p class="text-xs text-brand-muted">給食調理室へ：『子どもたちから今日一番の笑顔が集まりました。美味しい給食をありがとうございます』</p>
+        </div>
+      `;
+      setTimeout(() => {
+        feedback.querySelector('div').classList.remove('animate-pulse');
+      }, 600);
+    }
+  </script>
+</body>
+</html>
